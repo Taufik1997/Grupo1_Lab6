@@ -1,20 +1,21 @@
 #ifndef EQUIPO_H
 #define EQUIPO_H
 
-#include <Jugador.h>
-#include <Entrenador.h>
+#include "Jugador.h"
+#include "Entrenador.h"
 #include <string>
 #include <vector>
 
 using std::string;
+using std::vector;
 
 class Equipo{
 private:
 	string nombre;
 	vector<Jugador*> jugadores;
 	Entrenador* entrenador;
-	int nivelDefensa = 0;
-	int nivelOfensiva = 0;
+	int nivelDefensa;
+	int nivelOfensiva;
 	int golesFavor;
 	int golesEncontra;
 

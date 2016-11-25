@@ -16,6 +16,6 @@ Partido.o:	Partido.h Partido.cpp
 Jugador.o:	Persona.h Jugador.h Jugador.cpp
 	g++ -c Jugador.cpp
 
-Entrenador.o:	Entrenador.h Entrenador.cpp
+Entrenador.o:	Persona.h Entrenador.h Entrenador.cpp
 	g++ -c Entrenador.cpp
 	

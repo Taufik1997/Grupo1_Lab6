@@ -19,4 +19,5 @@ public:
 	string getApellido();
 	void setNivel(int);
 	int getNivel();
+};
 #endif

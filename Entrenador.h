@@ -1,9 +1,12 @@
 #ifndef ENTRENADOR_H
 #define  ENTRENADOR_H
+
+using std::string;
+
 #include <string>
 #include "Persona.h"
 
-using std::string;
+
 
 class Entrenador : public Persona {
     private:

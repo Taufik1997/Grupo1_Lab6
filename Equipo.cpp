@@ -13,6 +13,8 @@ Equipo::Equipo(string nombre,Entrenador* entrenador,int golesFavor, int golesEnc
 	this->entrenador = entrenador;
 	this->golesFavor = golesFavor;
 	this->golesEncontra = golesEncontra;
+	this-> nivelOfensiva=0;
+	this-> nivelDefensa=0;
 	this-> nivelOfensiva+=entrenador->getNivel()*1.10;
 	this-> nivelDefensa+=entrenador->getNivel();
 }
