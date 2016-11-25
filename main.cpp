@@ -1,5 +1,16 @@
 #include <iostream>
+#include <string>
+#include "Entrenador.h"
+#include "Equipo.h"
+#include "Jugador.h"
+#include "Partido.h"
+#include "Persona.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
 using namespace std;
+
 int main(){
 	vector<Equipo*>equipos;
 	Equipo* team = new Equipo();
@@ -55,8 +66,33 @@ int main(){
 			equipos.push_back(team);
 		}//crea nuevo equipo
 		if(opc==2){//crear nuevo torneo
-						
+			int team1=-1, team2=-2, team3=-3, team4,-4;
+			for (int i = 0; i < vector.size(); ++i)
+			{
+				cout<< i <<""<<equipos.at(i)->toString()<<endl;
+			}
+			cout<<"Ingrese el numero del primer equipo que quiere que juegue en el torneo: ";
+			cin>>team1;
+			do{
+				cout<<"Ingrese el numero del segundo equipo que quiere que juegue en el torneo: ";
+				cin>>team2;
+			}while(team1==team2);
+			do{
+				cout<<"Ingrese el numero del tercer equipo que quiere que juegue en el torneo: ";
+				cin>>team3;
+			}while(team3==team2&&team3==team1);
+			cout<<"Ingrese el numero del cuarto equipo que quiere que juegue en el torneo: ";
+			cin>>team4;
+			int atk1,atk2,atk3,atk4, random1, random2, chance=0;
+			for (int i = 0; i < 6; ++i)
+			{
+				chance = rand()%10+1;
+				if(i==0){//1v2
+
+				}
+			}
+
 		}
-	}while(opc!=5);}
+	}while(opc!=5);
 	return 0;	
 }
