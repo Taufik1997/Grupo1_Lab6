@@ -88,17 +88,19 @@ int main(){
 			string marcador;
 			for (int i = 0; i < 6; ++i)
 			{
+				goal1=0;
+				goal2=0;
 				random1 = rand()%10+1;
 				if(i==0){//1v2
 					if(random1%2==0){
-						team->setLocal(vector.at(team1));
+						//team->setLocal(vector.at(team1));
 						local=team1;
 						visitante=team2;
 						if(atkL>defV){
 								goal1++;
 						}
 					} else {
-						team->setLocal(vector.at(team2));
+						//team->setLocal(vector.at(team2));
 						local=team2;
 						visitante=team1;
 						if(atkV>defL){
@@ -135,11 +137,11 @@ int main(){
 				}//fin 1v2
 				if(i==1){//1v3
 					if(random1%2==0){
-						team->setLocal(vector.at(team1));
+						//team->setLocal(vector.at(team1));
 						local=team1;
 						visitante=team3;
 					} else {
-						team->setLocal(vector.at(team3));
+						//team->setLocal(vector.at(team3));
 						local=team3;
 						visitante=team1;
 					}
@@ -164,15 +166,21 @@ int main(){
 						}
 					}
 				}//fin 1v3
-				if(i==0){//1v4
+				if(i==2){//1v4
 					if(random1%2==0){
-						team->setLocal(vector.at(team1));
+						//team->setLocal(vector.at(team1));
 						local=team1;
-						visitante=team2;
+						visitante=team4;
+						if(atkL>defV){
+								goal1++;
+						}
 					} else {
-						team->setLocal(vector.at(team2));
-						local=team2;
+						//team->setLocal(vector.at(team2));
+						local=team4;
 						visitante=team1;
+						if(atkV>defL){
+							goal2++;
+						}
 					}
 					for (int m = 0; m < 10; ++m)
 					{
@@ -181,18 +189,166 @@ int main(){
 						if(m%2==0){
 							atkL = equipos.at(local)->getNivelOfensiva()*random2;
 							defV = equipos.at(visitante)->getNivelDefensa()*random3;
-							defV += defV*0.9 
+							defV += defV*0.9;
+							if(atkL>defV){
+								goal1++;
+							}
 						} else {
 							atkV = equipos.at(visitante)->getNivelOfensiva()*random3;
 							defL = equipos.at(local)->getNivelDefensa()*random2;
 							atkV += atkV*0.9;
+							if(atkV>defL){
+								goal2++;
+							}
 						}
 					}
+					if(goal1>goal2){
+						ganador=local;
+					}else{
+						ganador=visitante;
+					}
+					marcador = goal1<<"-"<<goal2;
+					partidos.push_back(equipos.at(local)->getNombre(), equipos.at(visitante)->getNombre(), marcador, equipos.at(ganador)->getNombre(), equipos.at(local)->getNombre());
 				}//fin 1v4
+				if(i==3){//2v3
+					if(random1%2==0){
+						//team->setLocal(vector.at(team2));
+						local=team2;
+						visitante=team3;
+						if(atkL>defV){
+							goal1++;
+						}
+					} else {
+						//team->setLocal(vector.at(team2));
+						local=team3;
+						visitante=team2;
+						if(atkV>defL){
+							goal2++;
+						}
+					}
+					for (int m = 0; m < 10; ++m)
+					{
+						random2 = rand()%10+1;
+						random3 = rand()%10+1;
+						if(m%2==0){
+							atkL = equipos.at(local)->getNivelOfensiva()*random2;
+							defV = equipos.at(visitante)->getNivelDefensa()*random3;
+							defV += defV*0.9;
+							if(atkL>defV){
+								goal1++;
+							}
+						} else {
+							atkV = equipos.at(visitante)->getNivelOfensiva()*random3;
+							defL = equipos.at(local)->getNivelDefensa()*random2;
+							atkV += atkV*0.9;
+							if(atkV>defL){
+								goal2++;
+							}
+						}
+					}
+					if(goal1>goal2){
+						ganador=local;
+					}else{
+						ganador=visitante;
+					}
+					marcador = goal1<<"-"<<goal2;
+					partidos.push_back(equipos.at(local)->getNombre(), equipos.at(visitante)->getNombre(), marcador, equipos.at(ganador)->getNombre(), equipos.at(local)->getNombre());
+				}//fin 2v3
+				if(i==4){//2v4
+					if(random1%2==0){
+						//team->setLocal(vector.at(team2));
+						local=team2;
+						visitante=team4;
+						if(atkL>defV){
+								goal1++;
+						}
+					} else {
+						//team->setLocal(vector.at(team4));
+						local=team4;
+						visitante=team2;
+						if(atkV>defL){
+							goal2++;
+						}
+					}
+					for (int m = 0; m < 10; ++m)
+					{
+						random2 = rand()%10+1;
+						random3 = rand()%10+1;
+						if(m%2==0){
+							atkL = equipos.at(local)->getNivelOfensiva()*random2;
+							defV = equipos.at(visitante)->getNivelDefensa()*random3;
+							defV += defV*0.9;
+							if(atkL>defV){
+								goal1++;
+							}
+						} else {
+							atkV = equipos.at(visitante)->getNivelOfensiva()*random3;
+							defL = equipos.at(local)->getNivelDefensa()*random2;
+							atkV += atkV*0.9;
+							if(atkV>defL){
+								goal2++;
+							}
+						}
+					}
+					if(goal1>goal2){
+						ganador=local;
+					}else{
+						ganador=visitante;
+					}
+					marcador = goal1<<"-"<<goal2;
+					partidos.push_back(equipos.at(local)->getNombre(), equipos.at(visitante)->getNombre(), marcador, equipos.at(ganador)->getNombre(), equipos.at(local)->getNombre());
+				}//fin 2v4
+				if(i==5){//3v4
+					if(random1%2==0){
+						//team->setLocal(vector.at(team3));
+						local=team3;
+						visitante=team4;
+						if(atkL>defV){
+								goal1++;
+						}
+					} else {
+						//team->setLocal(vector.at(team2));
+						local=team3;
+						visitante=team4;
+						if(atkV>defL){
+							goal2++;
+						}
+					}
+					for (int m = 0; m < 10; ++m)
+					{
+						random2 = rand()%10+1;
+						random3 = rand()%10+1;
+						if(m%2==0){
+							atkL = equipos.at(local)->getNivelOfensiva()*random2;
+							defV = equipos.at(visitante)->getNivelDefensa()*random3;
+							defV += defV*0.9;
+							if(atkL>defV){
+								goal1++;
+							}
+						} else {
+							atkV = equipos.at(visitante)->getNivelOfensiva()*random3;
+							defL = equipos.at(local)->getNivelDefensa()*random2;
+							atkV += atkV*0.9;
+							if(atkV>defL){
+								goal2++;
+							}
+						}
+					}
+					if(goal1>goal2){
+						ganador=local;
+					}else{
+						ganador=visitante;
+					}
+					marcador = goal1<<"-"<<goal2;
+					partidos.push_back(equipos.at(local)->getNombre(), equipos.at(visitante)->getNombre(), marcador, equipos.at(ganador)->getNombre(), equipos.at(local)->getNombre());
+				}//fin 3v4
 			}
 
 		}
+		
 		//visita -90%
 	}while(opc!=5);
 	return 0;	
 }
+
+//1v2 1v3 1v4 2v3 2v4 3v46
