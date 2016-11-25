@@ -83,16 +83,39 @@ int main(){
 			}while(team3==team2&&team3==team1);
 			cout<<"Ingrese el numero del cuarto equipo que quiere que juegue en el torneo: ";
 			cin>>team4;
-			int atk1,atk2,atk3,atk4, random1, random2, chance=0;
+			int atkL,atkV, defL, defV, random1, random2, chance=0, local, visitante;
 			for (int i = 0; i < 6; ++i)
 			{
-				chance = rand()%10+1;
+				random1 = rand()%10+1;
 				if(i==0){//1v2
-
+					if(random1%2==0){
+						team->setLocal(vector.at(team1));
+						local=team1;
+						visitante=team2;
+					} else {
+						team->setLocal(vector.at(team2));
+						local=team2;
+						visitante=team1;
+					}
+					for (int m = 0; m < 10; ++m)
+					{
+						random2 = rand()%10+1;
+						random3 = rand()%10+1;
+						if(m%2==0){
+							atkL = equipos.at(local)->getNivelOfensiva()*random2;
+							defV = equipos.at(visitante)->getNivelDefensa()*random3;
+							defV += defV*0.9 
+						} else {
+							atkV = equipos.at(visitante)->getNivelOfensiva()*random3;
+							defL = equipos.at(local)->getNivelDefensa()*random2;
+							atkV += atkV*0.9;
+						}
+					}
 				}
 			}
 
 		}
+		//visita -90%
 	}while(opc!=5);
 	return 0;	
 }
