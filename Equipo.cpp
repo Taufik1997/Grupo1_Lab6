@@ -49,6 +49,8 @@ Entrenador* Equipo::getEntrenador(){
 
 void Equipo::setEntrenador(Entrenador* entre){
 	entrenador = entre;
+	nivelDefensa+=entrenador->getNivel();
+	nivelOfensiva+=entrenador->getNivel()*1.10;
 }
 
 void Equipo::setNivelDefensa(int nivel){

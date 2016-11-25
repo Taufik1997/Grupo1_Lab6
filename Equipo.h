@@ -13,13 +13,13 @@ private:
 	string nombre;
 	vector<Jugador*> jugadores;
 	Entrenador* entrenador;
-	int nivelDefensa;
-	int nivelOfensiva;
+	int nivelDefensa = 0;
+	int nivelOfensiva = 0;
 	int golesFavor;
 	int golesEncontra;
 
 public:
-	Equipo(string,Entrenador*,int,int,int,int);
+	Equipo(string,Entrenador*,int,int);
 	virtual ~Equipo();
 	void setNombre(string);
 	string getNombre();
