@@ -17,11 +17,12 @@ private:
 	int golesEncontra;
 
 public:
-	Equipo();
+	Equipo(string,Entrenador*,int,int,int,int);
 	virtual ~Equipo();
 	void setNombre(string);
 	string getNombre();
 	void agregarJugadores(Jugador*);
+	jugador* getJugadores();
 	Entrenador* getEntrenador();
 	void setEntrenador(Entrenador*);
 	int getNivelDefensa();
