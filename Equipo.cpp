@@ -85,15 +85,3 @@ string Equipo::toString(){
 	return ss.str();
 }
 
-	void (Jugador*);
-	jugador* getJugadores();
-	Entrenador* getEntrenador();
-	void setEntrenador(Entrenador*);
-	int ();
-	void (int);
-	int ();
-	void (int);
-	int getGolesFavor();
-	void setGolesFavor(int);
-	int getGolesEncontra();
-	void setGolesEncontra(int);

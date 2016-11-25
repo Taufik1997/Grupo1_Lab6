@@ -1,6 +1,8 @@
 #ifndef EQUIPO_H
 #define EQUIPO_H
 
+#include <Jugador.h>
+#include <Entrenador.h>
 #include <string>
 #include <vector>
 
@@ -22,7 +24,7 @@ public:
 	void setNombre(string);
 	string getNombre();
 	void agregarJugadores(Jugador*);
-	jugador* getJugadores();
+	Jugador* getJugadores();
 	Entrenador* getEntrenador();
 	void setEntrenador(Entrenador*);
 	int getNivelDefensa();
