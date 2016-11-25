@@ -8,14 +8,13 @@ Equipo::Equipo(){
 
 }
 
-Equipo::Equipo(string nombre,Entrenador* entrenador,int nivelDefensa, int nivelOfensiva,int golesFavor, int golesEncontra) {
-	this->nombre;
+Equipo::Equipo(string nombre,Entrenador* entrenador,int golesFavor, int golesEncontra) {
+	this->nombre = nombre;
 	this->entrenador = entrenador;
-	this->nivelDefensa = nivelDefensa;
-	this->nivelOfensiva = nivelOfensiva;
 	this->golesFavor = golesFavor;
 	this->golesEncontra = golesEncontra;
-
+	this-> nivelOfensiva+=entrenador->getNivel()*1.10;
+	this-> nivelDefensa+=entrenador->getNivel();
 }
 
 Equipo::~Equipo(){
@@ -31,7 +30,13 @@ string Equipo::getNombre(){
 }
 
 void Equipo::agregarJugadores(Jugador* jugador){
-	jugadores.push_back(jugador);
+	if(jugadores.size<11){
+		jugadores.push_back(jugador);
+		nivelDefensa+=jugador->getNivel();
+		nivelOfensiva+=jugador->getNivel()*1.10;
+	}else{
+		cout<<"El equipo solo puede tener un 11."<<endl;
+	}
 }
 
 Jugador* Equipo::getJugadores(){
