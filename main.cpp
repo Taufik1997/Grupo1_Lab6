@@ -20,13 +20,13 @@ int main(){
 	int opc = 0;
 	do{
 		//nombre del Equipo, Entrenador, nivelDef, nivelOfensiva, golesAfa,golesContra
-		cout<<"     Football\n1)Agregar un nuevo Equipo\n2)Sobre el Juego\n7)Salir";
+		cout<<"     Football\n1)Agregar un nuevo Equipo\n2)Simulador\n3)About this game\n4)Salir\n";
 		cin>>opc;
 		if(opc==1){
 			string nombre, nombreEntrenador, apellidoEntrenador, nombreJugador,sobrenombre, tactica;
 			string apellidoJugador, sobreNombreJugador, posicion;
 			int nivel, nivelJugador;
-			cout<<""<<endl;//Explicación aquí
+			cout<<"¡Bienvenido! Un equipo forma de once jugadores y un entrenador."<<endl;//Explicación aquí
 			cout<<"¡Ingrese el nombre de su gran equipo!: ";
 			cin>>nombre;
 			cout<<""<<endl;//Explicación del entrenador
@@ -45,26 +45,27 @@ int main(){
 			}while(nivel<0 && nivel>10);
 			cout<<"Ingrese la táctica del entrenador:";
 			cin>>tactica;
-			cout<<""<<endl;//explicación de jugadores
+			cout<<"¡A continuación usted tiene que ingresar 11 jugadores con una cualidad diferente!"<<endl;//explicación de jugadores
 			team->setEntrenador(new Entrenador(nombreEntrenador,apellidoEntrenador,sobrenombre,nivel,tactica));
 			for (int i = 0; i < 11; ++i)
 			{
 				cout<<"Ingrese el nombre del Jugador "<<i<<": ";
 				cin>>nombreJugador;
-				cout<<"Ingrese el apellido del Jugador: ";
+				cout<<"Ingrese el apellido del Jugador: "<<i<<": ";
 				cin>>apellidoJugador;
-				cout<<"Ingrese el sobrenombre del Jugador: ";
+				cout<<"Ingrese el sobrenombre del Jugador "<<i<<": ";
 				cin>>sobreNombreJugador;
 				do{
-					cout<<"Ingrese el nivel de este Jugador (1-10): ";
+					cout<<"Ingrese el nivel de este Jugador "<<i<<"(1-10): ";
 					cin>>nivelJugador;
 					if(nivelJugador<0 && nivelJugador>10){
-						cout<<"El nivel tiene que estar en el rango 1-10"<<endl;
+						cout<<"El nivel tiene que estar en el rango 1-10."<<endl;
 					}
 				}while(nivelJugador<0 && nivelJugador>10);
 				cout<<"Ingrese la posicion del este jugador: ";
 				cin>>posicion;
 				team->agregarJugadores(new Jugador(nombreJugador, apellidoJugador, sobreNombreJugador, nivelJugador, posicion));
+				team->setNombre(nombre);
 				cout<<endl;
 			}//fin de la creación de los jugadores.
 			equipos.push_back(team);
@@ -358,9 +359,11 @@ int main(){
 			}
 
 		}
-		
+		if(opc==3){
+			cout<<"¡Bienvenido a este programa! Este programa es football!\n Imagínese que sólo son penales. Cada quién tiene la posibilidad de echar  un gol pero todo esto es al azar!\n Así que.. suerte!"<<endl;
+		}
 		//visita -90%
-	}while(opc!=5);
+	}while(opc!=4);
 	ofstream file;
 	file.open("Partidos.txt");
 	file<<"Partidos:"<<endl;
