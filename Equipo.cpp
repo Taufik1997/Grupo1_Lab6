@@ -1,8 +1,10 @@
 #include "Equipo.h"
 #include <string>
 #include <sstream>
+#include <iostream>
 using std::stringstream;
 using std::string;
+using namespace std;
 
 Equipo::Equipo(){
 
@@ -32,7 +34,7 @@ string Equipo::getNombre(){
 }
 
 void Equipo::agregarJugadores(Jugador* jugador){
-	if(jugadores.size<11){
+	if(jugadores.size()<11){
 		jugadores.push_back(jugador);
 		nivelDefensa+=jugador->getNivel();
 		nivelOfensiva+=jugador->getNivel()*1.10;
@@ -41,9 +43,6 @@ void Equipo::agregarJugadores(Jugador* jugador){
 	}
 }
 
-Jugador* Equipo::getJugadores(){
-	return jugadores;
-}
 
 Entrenador* Equipo::getEntrenador(){
 	return entrenador;

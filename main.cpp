@@ -8,6 +8,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <sstream>
+#include <fstream>
 
 using namespace std;
 
@@ -21,8 +23,8 @@ int main(){
 		cout<<"     Football\n1)Agregar un nuevo Equipo\n2)Sobre el Juego\n7)Salir";
 		cin>>opc;
 		if(opc==1){
-			string nombreEquipo, nombreEntrenador, apellidoEntrenador, nombreJugador,sobrenombre, tactica;
-			string nombreJugador, apellidoJugador, sobreNombreJugador, posicion;
+			string nombre, nombreEntrenador, apellidoEntrenador, nombreJugador,sobrenombre, tactica;
+			string apellidoJugador, sobreNombreJugador, posicion;
 			int nivel, nivelJugador;
 			cout<<""<<endl;//Explicación aquí
 			cout<<"¡Ingrese el nombre de su gran equipo!: ";
@@ -41,13 +43,13 @@ int main(){
 					cout<<"El nivel tiene que estar en el rango 1-10"<<endl;
 				}
 			}while(nivel<0 && nivel>10);
-			cout<<"Ingrese la táctica del entrenador";
+			cout<<"Ingrese la táctica del entrenador:";
 			cin>>tactica;
 			cout<<""<<endl;//explicación de jugadores
-			team->setEntrenador(nombreEntrenador,apellidoEntrenador,sobrenombre,nivel,tactica);
+			team->setEntrenador(new Entrenador(nombreEntrenador,apellidoEntrenador,sobrenombre,nivel,tactica));
 			for (int i = 0; i < 11; ++i)
 			{
-				cout<<"Ingrese el nombre del Jugador: ";
+				cout<<"Ingrese el nombre del Jugador "<<i<<": ";
 				cin>>nombreJugador;
 				cout<<"Ingrese el apellido del Jugador: ";
 				cin>>apellidoJugador;
@@ -62,13 +64,14 @@ int main(){
 				}while(nivelJugador<0 && nivelJugador>10);
 				cout<<"Ingrese la posicion del este jugador: ";
 				cin>>posicion;
-				team->setJugador(new Jugador(nombreJugador, apellidoJugador, sobreNombreJugador, nivelJugador, posicion));
+				team->agregarJugadores(new Jugador(nombreJugador, apellidoJugador, sobreNombreJugador, nivelJugador, posicion));
+				cout<<endl;
 			}//fin de la creación de los jugadores.
 			equipos.push_back(team);
 		}//crea nuevo equipo
 		if(opc==2){//crear nuevo torneo
-			int team1=-1, team2=-2, team3=-3, team4,-4;
-			for (int i = 0; i < vector.size(); ++i)
+			int team1=-1, team2=-2, team3=-3, team4=-4;
+			for (int i = 0; i < equipos.size(); ++i)
 			{
 				cout<< i <<""<<equipos.at(i)->toString()<<endl;
 			}
@@ -84,7 +87,7 @@ int main(){
 			}while(team3==team2&&team3==team1);
 			cout<<"Ingrese el numero del cuarto equipo que quiere que juegue en el torneo: ";
 			cin>>team4;
-			int atkL,atkV, defL, defV, random1, random2, goal1=0, goal2=0, local, visitante, ganador;
+			int atkL,atkV, defL, defV, random1, random2, random3, goal1=0, goal2=0, local, visitante, ganador;
 			string marcador;
 			for (int i = 0; i < 6; ++i)
 			{
@@ -132,8 +135,10 @@ int main(){
 					}else{
 						ganador=visitante;
 					}
-					marcador = goal1<<"-"<<goal2;
-					partidos.push_back(equipos.at(local)->getNombre(), equipos.at(visitante)->getNombre(), marcador, equipos.at(ganador)->getNombre(), equipos.at(local)->getNombre());
+					char g1 = goal1-48;
+					char g2 = goal2-48;
+					marcador =  g1 + " a " + g2;
+					partidos.push_back(new Partido(equipos.at(local), equipos.at(visitante), marcador, equipos.at(ganador), equipos.at(local)));
 				}//fin 1v2
 				if(i==1){//1v3
 					if(random1%2==0){
@@ -207,8 +212,10 @@ int main(){
 					}else{
 						ganador=visitante;
 					}
-					marcador = goal1<<"-"<<goal2;
-					partidos.push_back(equipos.at(local)->getNombre(), equipos.at(visitante)->getNombre(), marcador, equipos.at(ganador)->getNombre(), equipos.at(local)->getNombre());
+					char g1 = goal1-48;
+					char g2 = goal2-48;
+					marcador =  g1 + " a " + g2;
+					partidos.push_back(new Partido(equipos.at(local), equipos.at(visitante), marcador, equipos.at(ganador), equipos.at(local)));
 				}//fin 1v4
 				if(i==3){//2v3
 					if(random1%2==0){
@@ -251,8 +258,10 @@ int main(){
 					}else{
 						ganador=visitante;
 					}
-					marcador = goal1<<"-"<<goal2;
-					partidos.push_back(equipos.at(local)->getNombre(), equipos.at(visitante)->getNombre(), marcador, equipos.at(ganador)->getNombre(), equipos.at(local)->getNombre());
+					char g1 = goal1-48;
+					char g2 = goal2-48;
+					marcador =  g1 + " a " + g2;
+					partidos.push_back(new Partido(equipos.at(local), equipos.at(visitante), marcador, equipos.at(ganador), equipos.at(local)));
 				}//fin 2v3
 				if(i==4){//2v4
 					if(random1%2==0){
@@ -295,8 +304,10 @@ int main(){
 					}else{
 						ganador=visitante;
 					}
-					marcador = goal1<<"-"<<goal2;
-					partidos.push_back(equipos.at(local)->getNombre(), equipos.at(visitante)->getNombre(), marcador, equipos.at(ganador)->getNombre(), equipos.at(local)->getNombre());
+					char g1 = goal1-48;
+					char g2 = goal2-48;
+					marcador =  g1 + " a " + g2;
+					partidos.push_back(new Partido(equipos.at(local), equipos.at(visitante), marcador, equipos.at(ganador), equipos.at(local)));
 				}//fin 2v4
 				if(i==5){//3v4
 					if(random1%2==0){
@@ -339,8 +350,10 @@ int main(){
 					}else{
 						ganador=visitante;
 					}
-					marcador = goal1<<"-"<<goal2;
-					partidos.push_back(equipos.at(local)->getNombre(), equipos.at(visitante)->getNombre(), marcador, equipos.at(ganador)->getNombre(), equipos.at(local)->getNombre());
+					char g1 = goal1-48;
+					char g2 = goal2-48;
+					marcador =  g1 + " a " + g2;
+					partidos.push_back(new Partido(equipos.at(local), equipos.at(visitante), marcador, equipos.at(ganador), equipos.at(local)));
 				}//fin 3v4
 			}
 
@@ -348,6 +361,20 @@ int main(){
 		
 		//visita -90%
 	}while(opc!=5);
+	ofstream file;
+	file.open("Partidos.txt");
+	file<<"Partidos:"<<endl;
+	for (int i = 0; i < 6; ++i)
+	{
+		file<< i<<"-"<<partidos.at(i)->toString()<<endl;
+	}
+
+	file<<"Los finalistas son"<<endl;
+	file<<partidos.at(6)->getGanador()<<endl;
+	file<<partidos.at(5)->getGanador()<<endl;
+
+	file<<endl;
+	file.close();
 	return 0;	
 }
 

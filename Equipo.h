@@ -21,6 +21,7 @@ private:
 
 public:
 	Equipo(string,Entrenador*,int,int);
+	Equipo();
 	virtual ~Equipo();
 	void setNombre(string);
 	string getNombre();

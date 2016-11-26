@@ -12,10 +12,11 @@ Persona::~Persona() {
 
 }
 
-Persona::Persona(string nombre, string apellido, int nivel){
+Persona::Persona(string nombre, string apellido,string sobrenombre, int nivel){
 	this->nombre = nombre;
 	this->apellido = apellido;
 	this->nivel = nivel;
+	this->sobrenombre = sobrenombre;
 }
 
 void Persona::setNombre(string nombre2){

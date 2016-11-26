@@ -8,9 +8,10 @@ class Persona{
 private:
 	string nombre;
 	string apellido;
+	string sobrenombre;
 	int nivel;
 public:
-	Persona(string,string,int);
+	Persona(string,string,string,int);
 	Persona();
 	virtual ~Persona();
 	void setNombre(string);
@@ -19,5 +20,6 @@ public:
 	string getApellido();
 	void setNivel(int);
 	int getNivel();
+	string toString();
 };
 #endif

@@ -22,7 +22,7 @@ public:
 	void setEquipo2(Equipo*);
 	string getMarcador();
 	void setMarcador(string);
-	Equipo* geteGanador();
+	Equipo* getGanador();
 	void setGanador(Equipo*);
 	Equipo* getLocal();
 	void setLocal(Equipo*);

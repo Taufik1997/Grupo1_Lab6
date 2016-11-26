@@ -1,8 +1,10 @@
 #include "Partido.h"
 #include <string>
 #include <sstream>
+#include <iostream>
 using std::stringstream;
 using std::string;
+using namespace std;
 
 Partido::Partido(){
 

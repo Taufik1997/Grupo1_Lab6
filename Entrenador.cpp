@@ -10,7 +10,7 @@ Entrenador::Entrenador(): Persona(){
 }
 
 
-Entrenador::Entrenador(string nombre,string apellido, int nivel, string tactica) : Persona(nombre,apellido,nivel),tactica(tactica){
+Entrenador::Entrenador(string nombre,string apellido,string sobrenombre, int nivel, string tactica) : Persona(nombre,apellido,sobrenombre,nivel),tactica(tactica){
     
 }
 

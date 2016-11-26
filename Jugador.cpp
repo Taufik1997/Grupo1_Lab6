@@ -10,7 +10,7 @@ Jugador::Jugador(): Persona(){
 }
 
 
-Jugador::Jugador(string nombre,string apellido, int nivel, string posicion) : Persona(nombre,apellido,nivel),posicion(posicion){
+Jugador::Jugador(string nombre,string apellido,string sobrenombre, int nivel, string posicion) : Persona(nombre,apellido,sobrenombre,nivel),posicion(posicion){
     
 }
 
